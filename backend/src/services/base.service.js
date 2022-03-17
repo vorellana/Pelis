@@ -17,4 +17,10 @@ exp.getBaseFilter = async (where, Model) =>{
     return result;
 }
 
+exp.createBase = async (data, Model) => {
+    data[Model.primaryKeyField] = uuidv4();
+    await Model.create(data)
+    return data;
+}
+
 module.exports = exp;
