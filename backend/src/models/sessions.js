@@ -1,5 +1,5 @@
 const {sequelize} = require("../plugins/database");
-const { Model, DataTypes } = require('sequelize');
+const { Model, DataTypes, fn } = require('sequelize');
 
 class Session extends Model{}
 
@@ -9,7 +9,7 @@ Session.init({
     device_type:            { type: DataTypes.TEXT },
     device_ip:              { type: DataTypes.TEXT },
     location:               { type: DataTypes.TEXT },
-    start_date:             { type: DataTypes.DATE },
+    start_date:             { type: DataTypes.DATE, defaultValue: fn('NOW') },
     end_date:               { type: DataTypes.DATE },
     createdAt:              { type: DataTypes.DATE, field: 'created_at' },
     updatedAt:              { type: DataTypes.DATE, field: 'updated_at' },
