@@ -23,4 +23,9 @@ exp.createBase = async (data, Model) => {
     return data;
 }
 
+exp.updateBase = async (id, data, Model) => {
+    await Model.update(data, {where: {id: id}})
+    return data;
+}
+
 module.exports = exp;
