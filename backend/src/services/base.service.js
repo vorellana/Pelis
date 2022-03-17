@@ -8,7 +8,7 @@ exp.getBaseAll = async (Model) =>{
 }
 
 exp.getBaseId = async (id, Model) =>{
-    const result =  await Model.findAll({id: id});
+    const result =  await Model.findAll({ where: {id: id}});
     return result;
 }
 

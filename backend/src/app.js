@@ -1,17 +1,15 @@
 const express = require('express');
 const cors = require('cors');
-
-const { sequelize } = require('../src/plugins/database');
-
+const {sequelize} = require('../src/plugins/database');
 const app = express();
 const config = require('../src/config');
 const port = config.port;
 
-// sequelize.sync(force: true).then(result => {
+// ***** verify database *****
 sequelize.sync().then(result => {
   console.log('successful database verification 1029')
 }).catch(err => {
-  console.log('error in the database')
+  console.log('error in the database: ' + err)
 })
 
 // ***** settings *****

@@ -1,17 +1,18 @@
 const exp = {}
 
 const { User }  = require('../models/users');
-const { getBaseAll } = require('../services/base.service')
+const { getBaseAll, getBaseId } = require('../services/base.service')
 
-exp.getUsers = async (req, res) => {
-
-    // let Users = await getBaseAll({id: '077665e2-a588-11ec-a0b1-f328090f0077'}, User)
-    let Users = await getBaseAll(User)
-
-    res.status(200).json(
-        Users
-    );
-
+exp.getAllUsers = async (req, res) => {
+    let users = await getBaseAll(User);
+    res.status(200).json(users);
 }
+
+exp.getUserById = async (req, res) => {
+    let id = req.params._id
+    let user = await getBaseId(id, User)
+    res.status(200).json(user);
+}
+
 
 module.exports = exp;
